@@ -77,7 +77,17 @@ public class BookRepo {
 		String sqlQuery = "Delete from books where id = ?";
 		return jdbc.update(sqlQuery, id);
 	}
-	
+	// find by specified title
+	public List<Book> findByTitle(String title){
+		String sqlQuery = "Select * from books where title like ?";
+		return jdbc.query(sqlQuery, mapper, "%"+title+"%");
+		
+	}
+	// find by author
+	public List<Book> findByAuthor(String author){
+		String sqlQuery = "select * from books where author like ?";
+		return jdbc.query(sqlQuery, mapper, "%"+ author+ "%");
+	}
 	
 	
 }
